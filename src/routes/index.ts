@@ -4,7 +4,7 @@ import ContactosController from '@controllers/controllers.js';
 
 const router = Router();
 
-router.get('/index',ContactosController.index);
+router.get('/',ContactosController.index);
 router.get('/admin/contacts',ContactosController.getAllContacts);
 router.get('/payment',ContactosController.payment);
 router.get('/getPayment',ContactosController.getPayment);
