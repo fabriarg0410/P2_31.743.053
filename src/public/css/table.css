@@ -1,0 +1,108 @@
+.contacts-container {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  max-width: 100%;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+.contacts-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.contacts-title {
+  font-size: 1.8rem;
+  color: #2c3e50;
+  font-weight: 600;
+}
+
+.contacts-table {
+  width: 100%;
+  border-collapse: collapse;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.contacts-table thead tr {
+  background-color: #3498db;
+  color: white;
+  text-align: left;
+}
+
+.contacts-table th,
+.contacts-table td {
+  padding: 1rem;
+}
+
+.contacts-table tbody tr {
+  border-bottom: 1px solid #dddddd;
+  transition: all 0.2s;
+}
+
+.contacts-table tbody tr:nth-of-type(even) {
+  background-color: #f8f9fa;
+}
+
+.contacts-table tbody tr:last-of-type {
+  border-bottom: 2px solid #3498db;
+}
+
+.contacts-table tbody tr:hover {
+  background-color: #e3f2fd;
+  transform: translateX(5px);
+}
+
+.contact-email {
+  color: #2980b9;
+  font-weight: 500;
+}
+
+.contact-date {
+  color: #7f8c8d;
+  font-size: 0.9rem;
+}
+
+.contact-ip {
+  font-family: 'Courier New', Courier, monospace;
+  color: #e74c3c;
+}
+
+@media screen and (max-width: 768px) {
+  .contacts-table {
+    border: 0;
+    box-shadow: none;
+  }
+  
+  .contacts-table thead {
+    display: none;
+  }
+  
+  .contacts-table tr {
+    margin-bottom: 1rem;
+    display: block;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  }
+  
+  .contacts-table td {
+    display: block;
+    text-align: right;
+    padding: 0.5rem 1rem;
+    border-bottom: 1px solid #eee;
+  }
+  
+  .contacts-table td::before {
+    content: attr(data-label);
+    float: left;
+    font-weight: bold;
+    color: #3498db;
+  }
+  
+  .contacts-table td:last-child {
+    border-bottom: 0;
+  }
+}

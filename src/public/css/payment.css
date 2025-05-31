@@ -1,0 +1,155 @@
+.payment-container {
+  max-width: 500px;
+  height: 700px;
+  margin: 2rem auto;
+  padding: 1.5rem;
+  background: #fff;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box; /* Añadido para incluir padding en el ancho */
+  background-color: #34db82;
+}
+.payment-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+.payment-title {
+  font-size: 1.8rem;
+  color: #2c3e50;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.payment-subtitle {
+  color: #7f8c8d;
+  font-size: 1rem;
+}
+
+.payment-form {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-label {
+  font-weight: 500;
+  color: #34495e;
+  font-size: 0.95rem;
+}
+
+.form-input {
+  padding: 0.8rem 1rem;
+  border: 1px solid #ddd;
+  font-size: 1rem;
+  transition: all 0.3s;
+  width: 100%; /* Asegura que no se salga del contenedor */
+  box-sizing: border-box; /* Incluye padding en el ancho */
+}
+
+
+.card-details {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.expiration-group {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.expiration-input {
+  width: 100%; /* Cambiado para mejor responsive */
+  flex: 1; /* Permite que los selects crezcan */
+}
+
+.amount-group {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.currency-select {
+  flex: 0 0 80px;
+}
+
+.submit-btn {
+  background-color: white;
+  color: black;
+  padding: 1rem;
+  border: none;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  width: 50%; /* Ocupa todo el ancho disponible */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.card-icon {
+  height: 24px;
+  margin-left: 0.5rem;
+  vertical-align: middle;
+}
+
+/* Estilos mejorados para dispositivos móviles */
+@media screen and (max-width: 768px) {
+  .payment-container {
+    padding: 1.2rem;
+    margin: 1rem;
+    width: calc(100% - 2rem); /* Ajuste para márgenes */
+  }
+  
+  .payment-title {
+    font-size: 1.5rem;
+  }
+  
+  .card-details {
+    grid-template-columns: 1fr;
+  }
+  
+  .expiration-group {
+    flex-direction: column; /* Cambia a columna en móviles */
+    gap: 0.5rem;
+  }
+  
+  .expiration-input {
+    width: 100%;
+  }
+  
+  .amount-group {
+    flex-direction: column; /* Cambia a columna en móviles */
+    align-items: stretch;
+  }
+  
+  .currency-select {
+    flex: 1;
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .payment-container {
+    padding: 1rem;
+    margin: 0.5rem;
+    width: calc(100% - 1rem);
+  }
+  
+  .payment-title {
+    font-size: 1.3rem;
+  }
+  
+  .payment-form {
+    gap: 1rem;
+  }
+  
+  .form-input {
+    padding: 0.7rem 0.9rem;
+    font-size: 0.95rem;
+  width: 100%;
+  }
+}

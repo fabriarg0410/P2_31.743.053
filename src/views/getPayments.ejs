@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registros de Pagos</title>
+    <link rel="stylesheet" href="/css/table.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Estilos adicionales específicos para pagos */
+        .card-number {
+            font-family: 'Courier New', monospace;
+            letter-spacing: 1px;
+        }
+        
+        .card-details {
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+        }
+        
+        .card-expiry {
+            white-space: nowrap;
+        }
+        
+        .currency {
+            font-weight: 500;
+            color: #27ae60;
+        }
+        
+        .card-type {
+            margin-left: 0.5rem;
+            color: #7f8c8d;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <div class="contacts-container">
+        <div class="contacts-header">
+            <h1 class="contacts-title">Registros de Pagos <i class="fas fa-credit-card"></i></h1>
+            <span>Total:<%=datePayments.length%></span>
+        </div>
+
+        <% if (datePayments.length > 0) { %>
+            <table class="contacts-table">
+                <thead>
+                    <tr>
+                        <th>Titular</th>
+                        <th>Correo</th>
+                        <th>Tarjeta</th>
+                        <th>Expiración</th>
+                        <th>Moneda</th>
+                        <th>Monto</th>
+                        <th>Fecha</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% datePayments.forEach(payment => { %>
+                        <tr>
+                            <td data-label="Titular"><%= payment.nombreTitular %></td>
+                            <td data-label="Correo" class="contact-email"><%= payment.correo %></td>
+                            <td data-label="Correo" class="contact-email"><%= payment.descripcion %></td>
+                            <td data-label="Tarjeta">
+                                <div class="card-details">
+                                    <span class="card-number">•••• •••• •••• <%= payment.cardNumber.slice(-4) %></span>
+                                    <span class="card-type">
+                                        <% if (['4'].includes(payment.cardNumber.charAt(0))) { %>
+                                            <i class="fab fa-cc-visa"></i>
+                                        <% } else if (['5'].includes(payment.cardNumber.charAt(0))) { %>
+                                            <i class="fab fa-cc-mastercard"></i>
+                                        <% } else if (['3'].includes(payment.cardNumber.charAt(0))) { %>
+                                            <i class="fab fa-cc-amex"></i>
+                                        <% } else { %>
+                                            <i class="fas fa-credit-card"></i>
+                                        <% } %>
+                                    </span>
+                                </div>
+                            </td>
+                            <td data-label="Expiración" class="card-expiry">
+                                <%= payment.expMonth %>/<%= payment.expYear.toString().slice(-2) %>
+                            </td>
+                            <td data-label="Moneda" class="currency">
+                                <% if (payment.currency === 'USD') { %>
+                                    $ USD
+                                <% } else if (payment.currency === 'EUR') { %>
+                                    € EUR
+                                <% } else if (payment.currency === 'GBP') { %>
+                                    £ GBP
+                                <% } else { %>
+                                    <%= payment.currency %>
+                                <% } %>
+                            </td>
+                            <td>
+                                <%=payment.amount%>
+                            </td>
+                            <td>
+                                <%=payment.reference%>
+                            </td>
+                            <td data-label="Fecha" class="contact-date">
+                                <%= new Date(payment.createdAt).toLocaleDateString() %>
+                                <br>
+                                <%= new Date(payment.createdAt).toLocaleTimeString() %>
+                            </td>
+                        </tr>
+                    <% }); %>
+                </tbody>
+            </table>
+        <% } else { %>
+            <p>No hay registros de pagos disponibles.</p>
+        <% } %>
+    </div>
+</body>
+</html>

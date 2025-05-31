@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registros de Contactos</title>
+    <link rel="stylesheet" href="/css/table.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="contacts-container">
+        <div class="contacts-header">
+            <h1 class="contacts-title">Registros de Contacto</h1>
+            <span>Total: <%= contacts.length %></span>
+        </div>
+
+        <% if (contacts.length > 0) { %>
+            <table class="contacts-table">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Pais</th>
+                        <th>Email</th>
+                        <th>Comentario</th>
+                        <th>IP</th>
+                        <th>Fecha</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% contacts.forEach(contact => { %>
+                        <tr>
+                            <td data-label="Nombre"><%= contact.nombre %></td>
+                            <td data-label="Pais"><%= contact.pais %></td>
+                            <td data-label="Email" class="contact-email"><%= contact.email %></td>
+                            <td data-label="Comentario"><%= contact.comentario %></td>
+                            <td data-label="IP" class="contact-ip"><%= contact.ip %></td>
+                            <td data-label="Fecha" class="contact-date">
+                                <%= new Date(contact.createdAt).toLocaleDateString() %>
+                                <br>
+                                <%= new Date(contact.createdAt).toLocaleTimeString() %>
+                            </td>
+                        </tr>
+                    <% }); %>
+                </tbody>
+            </table>
+        <% } else { %>
+            <p>No hay registros de contactos disponibles.</p>
+        <% } %>
+    </div>
+</body>
+</html>

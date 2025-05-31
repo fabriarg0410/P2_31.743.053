@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registro de Pago</title>
+  <link rel="stylesheet" href="/css/payment.css">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <script src='/js/alertConfig.js'></script>
+</head>
+<body>
+  <div class="payment-container">
+    <div class="payment-header">
+      <h1 class="payment-title">Registro de Pago </h1>
+      <p class="payment-subtitle">Ingrese los datos solicitados</p>
+    </div>
+    
+    <form id='formularioPayment' class="payment-form">
+      <div class="form-group">
+        <label for="email" class="form-label">Correo Electrónico</label>
+        <input type="email" id="correo" name="correo" class="form-input" placeholder="fabrizzzzio@coder.com" required>
+      </div>
+      
+      <div class="form-group">
+        <label for="cardholder" class="form-label">Nombre del Titular</label>
+        <input type="text" id="nombreTitular" name="nombreTitular" class="form-input" placeholder="igualito q en la tarjeta mi hermano" required>
+      </div>
+      
+<div class="form-group">
+          <label for="cardNumber" class="form-label">Número de Tarjeta</label>
+          
+          <select name="cardNumber" id="cardNumber" class="form-input" required>
+            <option value="4111111111111111">4111111111111111</option>
+            <option value="5555555555554444">5555555555554444</option>
+            <option value="378282246310005">378282246310005</option>
+            <option value="6011111111111117">6011111111111117</option>
+            <option value="3530111333300000">3530111333300000</option>
+            <option value="30569309025904">30569309025904</option>
+          </select>
+        </div>
+      
+      <div class="card-details">
+        <div class="form-group">
+          <label class="form-label">Fecha de Expiración</label>
+          <div class="expiration-group">
+            <select id="expMonth" name="expMonth" class="form-input expiration-input" required>
+              <option value="" disabled selected>Mes</option>
+              <% for(let i = 1; i <= 12; i++) { %>
+                <option value="<%= i < 10 ? '0' + i : i %>"><%= i < 10 ? '0' + i : i %></option>
+              <% } %>
+            </select>
+            <select id="expYear" name="expYear" class="form-input expiration-input" required>
+              <option value="" disabled selected>Año</option>
+              <% const currentYear = new Date().getFullYear(); %>
+              <% for(let i = 0; i < 10; i++) { %>
+                <option value="<%= currentYear + i %>"><%= currentYear + i %></option>
+              <% } %>
+            </select>
+          </div>
+        </div>
+        
+        <div class="form-group">
+          <label for="cvv" class="form-label">Código de Seguridad</label>
+          <input type="text" id="cvv" name="cvv" class="form-input" placeholder="333" pattern="[0-9]{3,4}" required>
+        </div>
+      </div>
+      
+      <div class="form-group">
+        <label class="form-label">Monto a Pagar</label>
+        <div class="amount-group">
+          <select id="currency" name="currency" class="form-input currency-select" required>
+            <option value="USD">USD $</option>
+            <option value="EUR">EUR €</option>
+            <option value="GBP">GBP £</option>
+            <option value="JPY">JPY ¥</option>
+          </select>
+          <input type="number" id="amount" name="amount" class="form-input" placeholder="0.00" min="0" step="0.01" required>
+        </div>
+      </div>
+      
+      <button type="submit" class="submit-btn">
+        <i class="fas fa-credit-card card-icon"></i> Realizar Pago
+      </button>
+    </form>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src='/js/fetch2.js'></script>
+  <script src="/js/script.js"></script>
+</body>
+</html>
