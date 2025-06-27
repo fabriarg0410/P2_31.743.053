@@ -34,7 +34,7 @@
       </div>
   </form>
 
-    <div class="contacts-container">
+  <div id="contactsContainer" >
         <div class="contacts-header">
             <h1 class="contacts-title">Registros de Contacto</h1>
             <span>Total: <%= contacts.length %></span>
@@ -72,6 +72,7 @@
         <% } else { %>
             <p>No hay registros de contactos disponibles.</p>
         <% } %>
+    </>
     </div>
 <script src="/js/filter.js"></script>
 </body>
