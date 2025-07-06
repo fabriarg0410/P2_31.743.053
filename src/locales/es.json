@@ -1,0 +1,177 @@
+{
+  "header": {
+    "title": "MOLDEA TUS IDEAS",
+    "subtitle": "CREA TUS FIGURAS O PROTOTIPOS CON NOSOTROS"
+  },
+  "about": {
+    "title": "Acerca de",
+    "mission": {
+      "title": "Nuestra Misión",
+      "description": "En Impresiones 3D, nuestra misión es llevar tus ideas a la realidad mediante la tecnología de impresión 3D. Creemos que cada diseño tiene el potencial de convertirse en un producto único y funcional. Nos dedicamos a ofrecer soluciones personalizadas que se adaptan a tus necesidades, ya sea para proyectos profesionales, educativos o personales."
+    },
+    "quality": {
+      "title": "Calidad y Sostenibilidad",
+      "description": "Nos enorgullece utilizar materiales de alta calidad y respetuosos con el medio ambiente, como el plástico PLA biodegradable. Nuestro compromiso con la sostenibilidad nos impulsa a minimizar nuestro impacto en el planeta mientras proporcionamos productos duraderos y estéticamente atractivos. Cada impresión que realizamos refleja nuestra atención al detalle y nuestra pasión por la excelencia."
+    },
+    "service": {
+      "title": "Servicio al Cliente",
+      "description": "Tu satisfacción es nuestra prioridad. Nuestro equipo está aquí para guiarte en cada paso del proceso, desde la carga de tu diseño hasta la entrega final. Ofrecemos un servicio al cliente excepcional, asegurándonos de que tengas una experiencia agradable y sin complicaciones. ¡Estamos listos para ayudarte a hacer realidad tus proyectos!"
+    }
+  },
+  "gallery": {
+    "title": "Galería",
+    "work": "Nuestro trabajo"
+  },
+  "testimonials": {
+    "title": "Que dicen nuestros clientes",
+    "client1": {
+      "name": "Luisa",
+      "review": "¡Estoy muy satisfecha con mi compra en esta página de impresiones 3D! La calidad de la impresión es excepcional y el proceso de pedido fue muy fácil. Definitivamente volveré a comprar. ¡Recomendadísima!"
+    },
+    "client2": {
+      "name": "Alberto",
+      "review": "¡Genial mi compra en esta web de impresiones 3D! La calidad es top y todo fue súper fácil. ¡Volveré a pedir seguro!"
+    }
+  },
+  "services": {
+    "title": "Nuestros servicios",
+    "small": {
+      "price": "Apartir de 20$",
+      "description": "Elaboración de piezas de menor tamaño"
+    },
+    "large": {
+      "price": "Apartir de 50$",
+      "description": "Elaboración de piezas de mayor tamaño"
+    },
+    "bulk": {
+      "price": "Apartir de 10 piezas",
+      "description": "Elaboración de piezas al mayor"
+    }
+  },
+  "payment": {
+    "title": "Opciones de pago",
+    "small": {
+      "title": "Objetos de menor tamaño",
+      "price": "Desde 20$"
+    },
+    "large": {
+      "title": "Objetos de gran tamaño",
+      "price": "Desde 50$"
+    },
+    "bulk": {
+      "title": "Compra al mayor",
+      "price": "Desde 10 piezas"
+    },
+    "button": "Pagar"
+  },
+  "contact": {
+    "title": "Contáctanos",
+    "name": "Nombre",
+    "email": "Correo Electrónico",
+    "message": "Mensaje",
+    "send": "Enviar"
+  },
+  "footer": {
+    "phone": "Teléfono",
+    "email": "Correo Electrónico",
+    "address": "Dirección"
+  },
+  "nav": {
+    "logo_alt": "Logo de Conta App",
+    "inicio": "Inicio",
+    "usuarios": "Usuarios",
+    "empresa": "Empresa",
+    "pagos": "Pagos",
+    "contactos": "Contactos",
+    "login": "Iniciar Sesión",
+    "logout": "Cerrar Sesión",
+    "language": "Idioma",
+    "spanish": "Español",
+    "english": "Inglés"
+  },
+   "auth": {
+    "page_title": "Autenticación",
+    "spanish": "Español",
+    "english": "Inglés",
+    "login_tab": "Iniciar Sesión",
+    "register_tab": "Registrarse",
+    "login_title": "Iniciar Sesión",
+    "register_title": "Crear Cuenta",
+    "email_label": "Correo Electrónico",
+    "email_placeholder": "tucorreo@ejemplo.com",
+    "password_label": "Contraseña",
+    "password_placeholder": "••••••••",
+    "fullname_label": "Nombre Completo",
+    "fullname_placeholder": "Juan Pérez",
+    "confirm_password_label": "Confirmar Contraseña",
+    "confirm_password_placeholder": "••••••••",
+    "google_login": "Iniciar sesión con Google",
+    "login_button": "Ingresar",
+    "register_button": "Registrarse"
+  },
+  "contacto": {
+    "search_placeholder": "Buscar por nombre o correo...",
+    "title": "Registros de Contacto",
+    "total": "Total",
+    "no_records": "No hay registros de contactos disponibles.",
+    "table_headers": {
+      "name": "Nombre",
+      "country": "País",
+      "email": "Correo",
+      "comment": "Comentario",
+      "ip": "IP",
+      "date": "Fecha"
+    }
+  },
+  "pagos": {
+    "search_label": "Buscar pagos",
+    "search_placeholder": "Buscar por nombre o correo...",
+    "status_label": "Estado del pago",
+    "all_statuses": "Todos los estados",
+    "status_approved": "Aprobado",
+    "status_rejected": "Rechazado",
+    "status_pending": "Pendiente",
+    "service_label": "Servicio",
+    "all_services": "Todos los servicios",
+    "monthly_sub": "Suscripción Mensual",
+    "yearly_sub": "Suscripción Anual",
+    "start_date": "Fecha inicial",
+    "end_date": "Fecha final",
+    "payment_records": "Registros de Pagos",
+    "total": "Total",
+    "no_records": "No hay registros de pagos disponibles.",
+    "table": {
+      "cardholder": "Titular",
+      "email": "Correo",
+      "description": "Descripción",
+      "card": "Tarjeta",
+      "expiry": "Expiración",
+      "currency": "Moneda",
+      "amount": "Monto",
+      "reference": "Referencia",
+      "date": "Fecha"
+    }
+  },
+  "paymentt": {
+    "title": "Registro de Pago",
+    "subtitle": "Ingrese los datos solicitados",
+    "form": {
+      "email": "Correo Electrónico",
+      "cardholder": "Nombre del Titular",
+      "card_number": "Número de Tarjeta",
+      "description": "Descripción",
+      "exp_date": "Fecha de Expiración",
+      "month": "Mes",
+      "year": "Año",
+      "cvv": "Código de Seguridad",
+      "amount": "Monto a Pagar",
+      "submit": "Realizar Pago"
+    },
+    "placeholders": {
+      "email": "ejemplo@dominio.com",
+      "cardholder": "Igual que en la tarjeta",
+      "description": "Ingrese descripción del pago",
+      "cvv": "123"
+    }
+  }
+}

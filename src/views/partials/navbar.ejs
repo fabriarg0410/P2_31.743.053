@@ -1,0 +1,89 @@
+<% let langBasePath; %>
+<% if (view === 'index') { %>
+<% langBasePath = '/'; %>
+<% } else if (view === 'contactos') { %>
+<% langBasePath = '/admin/contacts'; %>
+<% } else if(view === 'getPayment'){ %>
+<% langBasePath = '/getPayment'; %> <!-- default fallback -->
+<% } else{%>
+<% langBasePath = '/payment' %>
+<% } %>
+<!-- NAVBAR -->
+<nav class="w-full bg-[var(--dark)] text-[var(--light)] fixed top-0 z-50 shadow-md">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16">
+
+    <!-- Logo -->
+    <a href="#Inicio" class="flex items-center gap-2">
+      <span class="font-semibold text-lg">Pagina web</span>
+    </a>
+
+    <!-- Mobile menu button -->
+    <button id="nav-toggle" class="md:hidden text-2xl focus:outline-none">
+      <i class="fas fa-bars"></i>
+    </button>
+
+    <!-- Desktop Menu -->
+    <ul id="nav-menu" class="hidden md:flex md:items-center md:space-x-6 font-medium">
+      <% if(view !== 'index'){ %>
+      <li><a href="/" class="hover:text-[var(--secondary)] transition-colors"><%= __('nav.inicio') %></a></li>
+      <% } %>
+      <li><a href="#Usuarios" class="hover:text-[var(--secondary)] transition-colors"><%= __('nav.usuarios') %></a></li>
+      <li><a href="#Empresa" class="hover:text-[var(--secondary)] transition-colors"><%= __('nav.empresa') %></a></li>
+      <li><a href="/getPayment" class="hover:text-[var(--secondary)] transition-colors"><%= __('nav.pagos') %></a></li>
+      <li><a href="/admin/contacts" class="hover:text-[var(--secondary)] transition-colors"><%= __('nav.contactos') %></a></li>
+      <li>
+        <a href="/login?form=login" class="hover:text-[var(--accent)] flex items-center gap-1 transition-colors">
+          <i class="fa fa-sign-in-alt"></i><%= __('nav.login') %>
+        </a>
+      </li>
+      <% if (isAdmin) { %>
+      <li>
+        <a href="/logout" class="hover:text-[var(--accent)] flex items-center gap-1 transition-colors">
+          <i class="fas fa-sign-out-alt"></i><%= __('nav.logout') %>
+        </a>
+      </li>
+      <% } %>
+
+      <!-- Language Dropdown -->
+      <li class="relative group">
+        <button class="flex items-center gap-1 hover:text-blue-400 transition duration-200">
+          🌐 <span><%= __('nav.language') %></span>
+          <i class="fas fa-chevron-down text-xs mt-[2px]"></i>
+        </button>
+        <ul class="absolute right-0 mt-2 bg-white text-black rounded-md shadow-lg overflow-hidden opacity-0 group-hover:opacity-100 scale-95 group-hover:scale-100 transition-all duration-200 transform origin-top min-w-[120px] z-50">
+          <li>
+            <a href="<%= langBasePath %>?lang=es" class="block px-4 py-2 hover:bg-blue-100 transition-colors">
+              🇪🇸 <%= __('nav.spanish') %>
+            </a>
+          </li>
+          <li>
+            <a href="<%= langBasePath %>?lang=en" class="block px-4 py-2 hover:bg-blue-100 transition-colors">
+              🇺🇸 <%= __('nav.english') %>
+            </a>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <!-- Mobile Dropdown Menu -->
+  <ul id="nav-mobile" class="md:hidden hidden flex-col bg-[var(--dark)] text-[var(--light)] space-y-3 py-4 px-6">
+    <% if(view !== 'index'){ %>
+    <li><a href="/" class="block"><%= __('nav.inicio') %></a></li>
+    <% } %>
+    <li><a href="#Usuarios" class="block"><%= __('nav.usuarios') %></a></li>
+    <li><a href="#Empresa" class="block"><%= __('nav.empresa') %></a></li>
+    <li><a href="/getPayment" class="block"><%= __('nav.pagos') %></a></li>
+    <li><a href="/admin/contacts" class="block"><%= __('nav.contactos') %></a></li>
+    <li><a href="/login?form=login" class="block"><%= __('nav.login') %></a></li>
+    <% if (isAdmin) { %>
+    <li><a href="/logout" class="block"><%= __('nav.logout') %></a></li>
+    <% } %>
+    <!-- Language toggle mobile -->
+    <li class="flex gap-3 items-center">
+      <a href="<%= langBasePath %>?lang=es" class="hover:text-blue-400 transition-colors">🇪🇸 <%= __('nav.spanish') %></a>
+      <span class="text-gray-400">|</span>
+      <a href="<%= langBasePath %>?lang=en" class="hover:text-blue-400 transition-colors">🇺🇸 <%= __('nav.english') %></a>
+    </li>
+  </ul>
+</nav>

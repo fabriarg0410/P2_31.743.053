@@ -10,7 +10,7 @@
     <title>Pagina web impresiones 3D</title>
     <link rel="shortcut icon" href="img/port.png" type="image/x-icon">
     <link rel="stylesheet" href="css/estilos.css">
-
+    <script src="https://cdn.tailwindcss.com"></script>
     <script src="/js/alertConfig.js"></script>
  <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-V24B13PKFG"></script>
@@ -21,209 +21,195 @@
 
   gtag('config', 'G-V24B13PKFG');
 </script>
-    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-    
-
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </head> 
 <body>
     <header>
-        <nav>
-            <a href="#">inicio</a>
-            <a href="#">Acerca de</a>
-            <a href="#">Galeria</a>
-            <a href="#">Clientes</a>
-            <a href="#">servicios</a>
-            <a href="/getPayment">Pagos</a>
-            <a href="/admin/contacts">contactos</a>
-            <a href="/login?form=login">Login</a>
-            <%if(isAdmin){%>
-                <a href="/logout">contactos</a>
-                <%}%>
-        </nav>
+       <%-include('partials/navbar')%>
         <section class="textos-header">
-            <h1>MOLDEA TUS IDEAS</h1>
-            <H2>CREA TUS FIGURAS O PROTOTIPOS CON NOSOTROS</H2>
+            <h1><%= __('header.title') %></h1>
+            <H2><%= __('header.subtitle') %></H2>
         </section>
         <div class="wave" style="height: 150px; overflow: hidden;" ><svg viewBox="0 0 500 150" preserveAspectRatio="none" style="height: 100%; width: 100%;"><path d="M0.00,49.98 C172.96,149.52 349.20,-49.98 500.00,49.98 L500.00,150.00 L0.00,150.00 Z" style="stroke: none; fill: #fff;"></path></svg></div>
     </header>
     <main>
         <section class="contenedor sobre-nosotros">
-            <h2 class="titulo">Acerca de</h2>
+            <h2 class="titulo"><%= __('about.title') %></h2>
             <div class="contenedor-sobre-nosotros">
                 <img src="img/imgpr1.jpg" alt="">
                 <div class="contenido-textos">
-                <h3><span>1</span>Nuestra Misión</h3>
-                <p>En Impresiones 3D, nuestra misión es llevar tus ideas a la realidad mediante la tecnología de impresión 3D. Creemos que cada diseño tiene el potencial de convertirse en un producto único y funcional. Nos dedicamos a ofrecer soluciones personalizadas que se adaptan a tus necesidades, ya sea para proyectos profesionales, educativos o personales.</p>
-                <h3><span>2</span> Calidad y Sostenibilidad</h3>
-                <p>Nos enorgullece utilizar materiales de alta calidad y respetuosos con el medio ambiente, como el plástico PLA biodegradable. Nuestro compromiso con la sostenibilidad nos impulsa a minimizar nuestro impacto en el planeta mientras proporcionamos productos duraderos y estéticamente atractivos. Cada impresión que realizamos refleja nuestra atención al detalle y nuestra pasión por la excelencia.</p>
-                <h3><span>3</span>Servicio al Cliente</h3>
-                <p>Tu satisfacción es nuestra prioridad. Nuestro equipo está aquí para guiarte en cada paso del proceso, desde la carga de tu diseño hasta la entrega final. Ofrecemos un servicio al cliente excepcional, asegurándonos de que tengas una experiencia agradable y sin complicaciones. ¡Estamos listos para ayudarte a hacer realidad tus proyectos!</p>
+                <h3><span>1</span><%= __('about.mission.title') %></h3>
+                <p><%= __('about.mission.description') %></p>
+                <h3><span>2</span><%= __('about.quality.title') %></h3>
+                <p><%= __('about.quality.description') %></p>
+                <h3><span>3</span><%= __('about.service.title') %></h3>
+                <p><%= __('about.service.description') %></p>
             </div>
             </div>
         </section>
         <section class="portafolio">
             <div class="contenedor">
-            <h2 class="titulo">Galeria</h2>
+            <h2 class="titulo"><%= __('gallery.title') %></h2>
             <div class="galeria-port">
                 <div class="imagen-port">
                     <img src="img/img11.jpg" alt="">
                     <div class="hover-galeria">
                         <img src="img/iconomejor.svg.pptx" alt="">
-                        <p>Nuestro trabajo</p>
+                        <p><%= __('gallery.work') %></p>
                     </div>
                 </div>
                 <div class="imagen-port">
                     <img src="img/img22.jpg" alt="">
                     <div class="hover-galeria">
                         <img src="img/iconomejor.pptx" alt="">
-                        <p>Nuestro trabajo</p>
+                        <p><%= __('gallery.work') %></p>
                     </div>
                 </div>
                 <div class="imagen-port">
                     <img src="img/img33.jpg" alt="">
                     <div class="hover-galeria">
                         <img src="img/iconomejor.pptx" alt="">
-                        <p>Nuestro trabajo</p>
+                        <p><%= __('gallery.work') %></p>
                     </div>
                 </div>
                 <div class="imagen-port">
                     <img src="img/img44.jpg" alt="">
                     <div class="hover-galeria">
                         <img src="img/iconomejor.pptx" alt="">
-                        <p>Nuestro trabajo</p>
+                        <p><%= __('gallery.work') %></p>
                     </div>
                 </div>
                 <div class="imagen-port">
                     <img src="img/img55.jpg" alt="">
                     <div class="hover-galeria">
                         <img src="img/iconomejor.pptx" alt="">
-                        <p>Nuestro trabajo</p>
+                        <p><%= __('gallery.work') %></p>
                     </div>
                 </div>
                 <div class="imagen-port">
                     <img src="img/img66.jpg" alt="">
                     <div class="hover-galeria">
                         <img src="img/iconomejor.pptx" alt="">
-                        <p>Nuestro trabajo</p>
+                        <p><%= __('gallery.work') %></p>
                     </div>
                 </div>
                 <div class="imagen-port">
                     <img src="img/img77.jpg" alt="">
                     <div class="hover-galeria">
                         <img src="img/iconomejor.pptx" alt="">
-                        <p>Nuestro trabajo</p>
+                        <p><%= __('gallery.work') %></p>
                     </div>
                 </div>
                 <div class="imagen-port">
                     <img src="img/img88.jpg" alt="">
                     <div class="hover-galeria">
                         <img src="img/iconomejor.pptx" alt="">
-                        <p>Nuestro trabajo</p>
+                        <p><%= __('gallery.work') %></p>
                     </div>
                 </div>
             </div>
             </div>
         </section>
         <section class="clientes contenedor">
-            <h2 class="titulo">que dicen nuestros clientes</h2>
+            <h2 class="titulo"><%= __('testimonials.title') %></h2>
             <div class="cards">
                 <div class="card">
                     <img src="img/face1.jpg" alt="">
                     <div class="contenido-texto-card">
-                        <h4>Luisa</h4>
-                        <p>"¡Estoy muy satisfecha con mi compra en esta página de impresiones 3D! La calidad de la impresión es excepcional y el proceso de pedido fue muy fácil. Definitivamente volveré a comprar. ¡Recomendadísima!"</p>
+                        <h4><%= __('testimonials.client1.name') %></h4>
+                        <p><%= __('testimonials.client1.review') %></p>
                     </div>
                 </div>
                 <div class="card">
                     <img src="img/face2.jpg" alt="">
                     <div class="contenido-texto-card">
-                        <h4>Alberto</h4>
-                        <p>""¡Genial mi compra en esta web de impresiones 3D! La calidad es top y todo fue súper fácil. ¡Volveré a pedir seguro!""</p>
+                        <h4><%= __('testimonials.client2.name') %></h4>
+                        <p><%= __('testimonials.client2.review') %></p>
                     </div>
                 </div>
             </div>
         </section>
         <section class="about-services">
             <div class="contenedor">
-                <h2 class="titulo">Nuestros servicios</h2>
+                <h2 class="titulo"><%= __('services.title') %></h2>
                 <div class="servicio-cont">
                     <div class="servivio-ind">
                         <img src="img/ilustracion2.jpg" alt="">
-                        <h3>Apartir de 20$</h3>
-                        <p>Elaboracion de piezas de menor tamaño</p>
+                        <h3><%= __('services.small.price') %></h3>
+                        <p><%= __('services.small.description') %></p>
                     </div>
                     <div class="servivio-ind">
                         <img src="img/ilustracion4.jpg" alt="">
-                        <h3>Apartir de 50$</h3>
-                        <p>Elaboracion de piezas de mayor tamaño</p>
+                        <h3><%= __('services.large.price') %></h3>
+                        <p><%= __('services.large.description') %></p>
                     </div>
                     <div class="servivio-ind">
                         <img src="img/ilustracion3.jpg" alt="">
-                        <h3>Apartir de 10 piezas</h3>
-                        <p>Elaboracion de piezas al mayor</p>
+                        <h3><%= __('services.bulk.price') %></h3>
+                        <p><%= __('services.bulk.description') %></p>
                     </div>
                 </div>
             </div>
         </section>
         <section class="pago">
-    <h2 class="titulo">Opciones de pago</h2>
+    <h2 class="titulo"><%= __('payment.title') %></h2>
     <div class="contenedor-pago">
         <div class="opcion-pago">
-            <h3>Objetos de menor tamaño</h3>
-            <p>Desde 20$</p>
+            <h3><%= __('payment.small.title') %></h3>
+            <p><%= __('payment.small.price') %></p>
                 <a href="/payment">
-        <button>Pagar</button>
+        <button><%= __('payment.button') %></button>
     </a>
         </div>
         <div class="opcion-pago">
-            <h3>Objetos de gran tamaño</h3>
-            <p>Desde 50$</p>
+            <h3><%= __('payment.large.title') %></h3>
+            <p><%= __('payment.large.price') %></p>
                 <a href="/payment">
-        <button>Pagar</button>
+        <button><%= __('payment.button') %></button>
     </a>
         </div>
         <div class="opcion-pago">
-            <h3>Compra al mayor</h3>
-            <p>Desde 10 piezas</p>
+            <h3><%= __('payment.bulk.title') %></h3>
+            <p><%= __('payment.bulk.price') %></p>
                 <a href="/payment">
-        <button>Pagar</button>
+        <button><%= __('payment.button') %></button>
     </a>
         </div>
     </div>
 </section>
 
 <section class="contacto">
-    <h2 class="titulo">Contáctanos</h2>
+    <h2 class="titulo"><%= __('contact.title') %></h2>
     <form id="formulario">
-        <label for="nombre">Nombre:</label>
+        <label for="nombre"><%= __('contact.name') %>:</label>
         <input type="text" id="nombre" name="nombre" required>
         
-        <label for="correo">Correo Electrónico:</label>
+        <label for="correo"><%= __('contact.email') %>:</label>
         <input type="email" id="email" name="email" required>
 
-        <label for="mensaje">Mensaje:</label>
+        <label for="mensaje"><%= __('contact.message') %>:</label>
         <textarea id="comentario" name="comentario" required></textarea>
         <div class="g-recaptcha" data-sitekey="<%=sitioKey%>"></div>
-        <button type="submit">Enviar</button>
+        <button type="submit"><%= __('contact.send') %></button>
     </form>
 </section>
     </main>
     <footer>
        <div class="contenedor-footer">
             <div class="content-foot">
-                <h4>Telefono</h4>
+                <h4><%= __('footer.phone') %></h4>
                 <p>0424-3582027</p>
             </div>
             <div class="content-foot">
-                <h4>Correo Electronico</h4>
+                <h4><%= __('footer.email') %></h4>
                 <p>Argentoinfabri@gmail.com</p>
             </div>
             <div class="content-foot">
-                <h4>Direccion</h4>
+                <h4><%= __('footer.address') %></h4>
                 <p>San Juan de los Morros</p>
             </div>
        </div> 
-       <h2 class="titulo-final">&copy; Fabrizio Argento / GlintGrove</h2>></h2>
+       <h2 class="titulo-final">&copy; Fabrizio Argento / GlintGrove</h2>
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src='/js/animacion.js'></script>

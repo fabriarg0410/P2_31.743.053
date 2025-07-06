@@ -1,0 +1,177 @@
+{
+  "header": {
+    "title": "SHAPE YOUR IDEAS",
+    "subtitle": "CREATE YOUR FIGURES OR PROTOTYPES WITH US"
+  },
+  "about": {
+    "title": "About",
+    "mission": {
+      "title": "Our Mission",
+      "description": "At 3D Printing, our mission is to bring your ideas to life through 3D printing technology. We believe that every design has the potential to become a unique and functional product. We are dedicated to offering personalized solutions that adapt to your needs, whether for professional, educational, or personal projects."
+    },
+    "quality": {
+      "title": "Quality and Sustainability",
+      "description": "We are proud to use high-quality and environmentally friendly materials, such as biodegradable PLA plastic. Our commitment to sustainability drives us to minimize our impact on the planet while providing durable and aesthetically attractive products. Every print we make reflects our attention to detail and our passion for excellence."
+    },
+    "service": {
+      "title": "Customer Service",
+      "description": "Your satisfaction is our priority. Our team is here to guide you through every step of the process, from uploading your design to final delivery. We offer exceptional customer service, ensuring you have a pleasant and hassle-free experience. We are ready to help you make your projects a reality!"
+    }
+  },
+  "gallery": {
+    "title": "Gallery",
+    "work": "Our work"
+  },
+  "testimonials": {
+    "title": "What our customers say",
+    "client1": {
+      "name": "Louise",
+      "review": "I am very satisfied with my purchase on this 3D printing website! The print quality is exceptional and the ordering process was very easy. I will definitely buy again. Highly recommended!"
+    },
+    "client2": {
+      "name": "Albert",
+      "review": "Great purchase on this 3D printing website! The quality is top-notch and everything was super easy. I will definitely order again!"
+    }
+  },
+  "services": {
+    "title": "Our services",
+    "small": {
+      "price": "From $20",
+      "description": "Production of smaller pieces"
+    },
+    "large": {
+      "price": "From $50",
+      "description": "Production of larger pieces"
+    },
+    "bulk": {
+      "price": "From 10 pieces",
+      "description": "Bulk production"
+    }
+  },
+  "payment": {
+    "title": "Payment options",
+    "small": {
+      "title": "Smaller objects",
+      "price": "From $20"
+    },
+    "large": {
+      "title": "Large objects",
+      "price": "From $50"
+    },
+    "bulk": {
+      "title": "Bulk purchase",
+      "price": "From 10 pieces"
+    },
+    "button": "Pay"
+  },
+  "contact": {
+    "title": "Contact Us",
+    "name": "Name",
+    "email": "Email",
+    "message": "Message",
+    "send": "Send"
+  },
+  "footer": {
+    "phone": "Phone",
+    "email": "Email",
+    "address": "Address"
+  },
+  "nav": {
+    "logo_alt": "Conta App Logo",
+    "inicio": "Home",
+    "usuarios": "Users",
+    "empresa": "Company",
+    "pagos": "Payments",
+    "contactos": "Contacts",
+    "login": "Login",
+    "logout": "Logout",
+    "language": "Language",
+    "spanish": "Spanish",
+    "english": "English"
+  },
+  "auth": {
+    "page_title": "Authentication",
+    "spanish": "Spanish",
+    "english": "English",
+    "login_tab": "Login",
+    "register_tab": "Register",
+    "login_title": "Sign In",
+    "register_title": "Create Account",
+    "email_label": "Email Address",
+    "email_placeholder": "youremail@example.com",
+    "password_label": "Password",
+    "password_placeholder": "••••••••",
+    "fullname_label": "Full Name",
+    "fullname_placeholder": "John Doe",
+    "confirm_password_label": "Confirm Password",
+    "confirm_password_placeholder": "••••••••",
+    "google_login": "Sign in with Google",
+    "login_button": "Sign In",
+    "register_button": "Register"
+  },
+   "contacto": {
+    "search_placeholder": "Search by name or email...",
+    "title": "Contact Records",
+    "total": "Total",
+    "no_records": "No contact records available.",
+    "table_headers": {
+      "name": "Name",
+      "country": "Country",
+      "email": "Email",
+      "comment": "Comment",
+      "ip": "IP",
+      "date": "Date"
+    }
+  },
+  "pagos": {
+    "search_label": "Search payments",
+    "search_placeholder": "Search by name or email...",
+    "status_label": "Payment status",
+    "all_statuses": "All statuses",
+    "status_approved": "Approved",
+    "status_rejected": "Rejected",
+    "status_pending": "Pending",
+    "service_label": "Service",
+    "all_services": "All services",
+    "monthly_sub": "Monthly Subscription",
+    "yearly_sub": "Yearly Subscription",
+    "start_date": "Start date",
+    "end_date": "End date",
+    "payment_records": "Payment Records",
+    "total": "Total",
+    "no_records": "No payment records available.",
+    "table": {
+      "cardholder": "Cardholder",
+      "email": "Email",
+      "description": "Description",
+      "card": "Card",
+      "expiry": "Expiry",
+      "currency": "Currency",
+      "amount": "Amount",
+      "reference": "Reference",
+      "date": "Date"
+    }
+  },
+  "paymentt": {
+    "title": "Payment Registration",
+    "subtitle": "Please enter the required information",
+    "form": {
+      "email": "Email Address",
+      "cardholder": "Cardholder Name",
+      "card_number": "Card Number",
+      "description": "Description",
+      "exp_date": "Expiration Date",
+      "month": "Month",
+      "year": "Year",
+      "cvv": "Security Code",
+      "amount": "Payment Amount",
+      "submit": "Process Payment"
+    },
+    "placeholders": {
+      "email": "example@domain.com",
+      "cardholder": "As it appears on card",
+      "description": "Enter payment description",
+      "cvv": "123"
+    }
+  }
+}

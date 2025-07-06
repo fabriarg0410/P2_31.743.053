@@ -5,75 +5,65 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registros de Contactos</title>
     <link rel="stylesheet" href="/css/table.css">
-        <link rel="stylesheet" href="/css/estilos.css">   
+    <link rel="stylesheet" href="/css/estilos.css">   
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
 </head>
 <body>
-            <nav style="background-color: #3498db;" >
-            <a href="/">inicio</a>
-            <a href="/getPayment">Pagos</a>
-            <a href="/admin/contacts">contactos</a>
-            <a href="/login?form=login">Login</a>
-            <%if(isAdmin){%>
-                <a href="/logout">contactos</a>
-                <%}%>
-        </nav>
-
-            <form id="filterForm" class="mb-6 w-full max-w-lg mx-auto">
-            <div class="relative">
+    <%-include('partials/navbar')%>
+     <div class="flex justify-center mt-40 items-center contacts-header flex-col">
+            <h1 class="contacts-title"><%= __('contacto.title') %></h1>
+        </div>
+    <form id="filterForm" class="mt-10 w-full max-w-lg mx-auto">
+        <div class="relative">
             <input
             type="text"
             id="searchInput"
-            placeholder="Buscar por nombre o correo..."
+            placeholder="<%= __('contacto.search_placeholder') %>"
             class="w-full px-4 py-3 pr-10 border border-gray-300 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 placeholder-gray-400 text-gray-700"
             />
             <div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
                 <i class="fas fa-search text-gray-400"></i>
-          </div>
-      </div>
-  </form>
-
-  <div id="contactsContainer" >
-        <div class="contacts-header">
-            <h1 class="contacts-title">Registros de Contacto</h1>
-            <span>Total: <%= contacts.length %></span>
+            </div>
         </div>
+    </form>
+
+    <div id="contactsContainer">
 
         <% if (contacts.length > 0) { %>
-            <table class="contacts-table">
-                <thead>
-                    <tr>
-                        <th>Nombre</th>
-                        <th>Pais</th>
-                        <th>Email</th>
-                        <th>Comentario</th>
-                        <th>IP</th>
-                        <th>Fecha</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <% contacts.forEach(contact => { %>
-                        <tr>
-                            <td data-label="Nombre"><%= contact.nombre %></td>
-                            <td data-label="Pais"><%= contact.pais %></td>
-                            <td data-label="Email" class="contact-email"><%= contact.email %></td>
-                            <td data-label="Comentario"><%= contact.comentario %></td>
-                            <td data-label="IP" class="contact-ip"><%= contact.ip %></td>
-                            <td data-label="Fecha" class="contact-date">
-                                <%= new Date(contact.createdAt).toLocaleDateString() %>
-                                <br>
-                                <%= new Date(contact.createdAt).toLocaleTimeString() %>
-                            </td>
-                        </tr>
-                    <% }); %>
-                </tbody>
-            </table>
+        <table class="contacts-table">
+            <thead>
+                <tr>
+                    <th><%= __('contacto.table_headers.name') %></th>
+                    <th><%= __('contacto.table_headers.country') %></th>
+                    <th><%= __('contacto.table_headers.email') %></th>
+                    <th><%= __('contacto.table_headers.comment') %></th>
+                    <th><%= __('contacto.table_headers.ip') %></th>
+                    <th><%= __('contacto.table_headers.date') %></th>
+                </tr>
+            </thead>
+            <tbody>
+                <% contacts.forEach(contact => { %>
+                <tr>
+                    <td data-label="<%= __('contacto.table_headers.name') %>"><%= contact.nombre %></td>
+                    <td data-label="<%= __('contacto.table_headers.country') %>"><%= contact.pais %></td>
+                    <td data-label="<%= __('contacto.table_headers.email') %>" class="contact-email"><%= contact.email %></td>
+                    <td data-label="<%= __('contacto.table_headers.comment') %>"><%= contact.comentario %></td>
+                    <td data-label="<%= __('contacto.table_headers.ip') %>" class="contact-ip"><%= contact.ip %></td>
+                    <td data-label="<%= __('contacto.table_headers.date') %>" class="contact-date">
+                        <%= new Date(contact.createdAt).toLocaleDateString(locale) %>
+                        <br>
+                        <%= new Date(contact.createdAt).toLocaleTimeString(locale) %>
+                    </td>
+                </tr>
+                <% }); %>
+            </tbody>
+        </table>
         <% } else { %>
-            <p>No hay registros de contactos disponibles.</p>
+        <p class="flex justify-center items-center mt-10"><%= __('contacto.no_records') %></p>
         <% } %>
-    </>
+    
     </div>
-<script src="/js/filter.js"></script>
+    <script src="/js/filter.js"></script>
 </body>
 </html>

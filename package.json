@@ -3,13 +3,12 @@
   "version": "1.0.0",
   "description": "",
   "main": "dist/app.js",
-"scripts": {
-  "dev": "nodemon --exec \"node --no-warnings --import tsx/esm src/app.ts\"",
-  "build": "tsc && tsc-alias && npm run copy-assets",
-  "copy-assets": "copyfiles -u 1 \"src/public/**/*\" \"src/views/**/*\" \"src/config/**/*\" dist/",
-  "start": "node dist/app.js",
-  "prestart": "npm run build"
-},
+  "scripts": {
+    "dev": "nodemon --exec \"node --no-warnings --import tsx/esm src/app.ts\"",
+    "build": "tsc && tsc-alias && cp -r src/public dist/ && cp -r src/locales dist/ && cp -r src/views dist/ && cp -r src/config dist/",
+    "start": "node dist/app.js",
+    "prestart": "npm run build"
+  },
   "keywords": [],
   "author": "SuperAdmin",
   "license": "ISC",
@@ -28,6 +27,7 @@
     "ejs": "^3.1.10",
     "express": "^5.1.0",
     "express-session": "^1.18.1",
+    "i18n": "^0.15.1",
     "nanoid": "^5.1.5",
     "nodemailer": "^7.0.3",
     "passport": "^0.7.0",
@@ -38,6 +38,7 @@
   },
   "devDependencies": {
     "@types/express": "^5.0.3",
+    "@types/i18n": "^0.13.12",
     "@types/nanoid": "^2.1.0",
     "@types/node": "^22.15.33",
     "copyfiles": "^2.4.1",

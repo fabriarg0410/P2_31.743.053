@@ -5,150 +5,136 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registros de Pagos</title>
     <link rel="stylesheet" href="/css/table.css">
-        <link rel="stylesheet" href="css/estilos.css">    
+    <link rel="stylesheet" href="css/estilos.css">    
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <style>
-        /* Estilos adicionales específicos para pagos */
-        .card-number {
-            font-family: 'Courier New', monospace;
-            letter-spacing: 1px;
-        }
-        
-        .card-details {
-            display: flex;
-            gap: 0.5rem;
-            align-items: center;
-        }
-        
-        .card-expiry {
-            white-space: nowrap;
-        }
-        
-        .currency {
-            font-weight: 500;
-            color: #27ae60;
-        }
-        
-        .card-type {
-            margin-left: 0.5rem;
-            color: #7f8c8d;
-            font-size: 0.9em;
-        }
-    </style>
 </head>
-<body>
-            <nav style="background-color: #3498db;" >
-            <a href="/">inicio</a>
-            <a href="/getPayment">Pagos</a>
-            <a href="/admin/contacts">contactos</a>
-            <a href="/login?form=login">Login</a>
-            <%if(isAdmin){%>
-                <a href="/logout">contactos</a>
-                <%}%>
-        </nav>
+<body class="bg-gray-50">
+    <%-include('partials/navbar')%>
+    <div class="mt-20 container mx-auto px-4 py-8">
+        <form id="filterForm" class="mb-8 w-full max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-4 items-end">
+            <div class="col-span-1 md:col-span-2">
+                <label for="searchInput" class="block text-sm font-medium text-gray-700 mb-1"><%= __('pagos.search_label') %></label>
+                <input id="searchInput" type="text" placeholder="<%= __('pagos.search_placeholder') %>" 
+                    class="w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500" />
+            </div>
+            <div>
+                <label for="estadoSelect" class="block text-sm font-medium text-gray-700 mb-1"><%= __('pagos.status_label') %></label>
+                <select id="estadoSelect" class="w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                    <option value=""><%= __('pagos.all_statuses') %></option>
+                    <option value="aprobado"><%= __('pagos.status_approved') %></option>
+                    <option value="rechazado"><%= __('pagos.status_rejected') %></option>
+                    <option value="pendiente"><%= __('pagos.status_pending') %></option>
+                </select>
+            </div>
+            <div>
+                <label for="servicioSelect" class="block text-sm font-medium text-gray-700 mb-1"><%= __('pagos.service_label') %></label>
+                <select id="servicioSelect" class="w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                    <option value=""><%= __('pagos.all_services') %></option>
+                    <option value="Suscripción Mensual"><%= __('pagos.monthly_sub') %></option>
+                    <option value="Suscripción Anual"><%= __('pagos.yearly_sub') %></option>
+                </select>
+            </div>
+            <div>
+                <label for="fechaInicio" class="block text-sm font-medium text-gray-700 mb-1"><%= __('pagos.start_date') %></label>
+                <input type="date" id="fechaInicio" class="w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500" />
+            </div>
 
-        <form id="filterForm" class="mb-6 w-full max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-4 items-end">
-  <input id="searchInput" type="text" placeholder="Buscar por nombre o correo" class="col-span-1 md:col-span-2 px-4 py-2 border rounded-lg w-full" />
-  
-  <select id="estadoSelect" class="px-4 py-2 border rounded-lg">
-    <option value="">Todos los estados</option>
-    <option value="aprobado">Aprobado</option>
-    <option value="rechazado">Rechazado</option>
-    <option value="pendiente">Pendiente</option>
-  </select>
+            <div>
+                <label for="fechaFin" class="block text-sm font-medium text-gray-700 mb-1"><%= __('pagos.end_date') %></label>
+                <input type="date" id="fechaFin" class="w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500" />
+            </div>
+        </form>
 
-  <select id="servicioSelect" class="px-4 py-2 border rounded-lg">
-    <option value="">Todos los servicios</option>
-    <option value="Suscripción Mensual">Suscripción Mensual</option>
-    <option value="Suscripción Anual">Suscripción Anual</option>
-    <!-- agrega más según tus servicios -->
-  </select>
+        <div id="contactsContainer" class="bg-white rounded-xl shadow-md overflow-hidden">
+            <div class="p-6">
+                <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-6">
+                    <h1 class="text-2xl font-bold text-gray-800">
+                        <%= __('pagos.payment_records') %> <i class="fas fa-credit-card ml-2 text-blue-500"></i>
+                    </h1>
+                    <span class="text-lg font-semibold text-gray-600 mt-2 md:mt-0">
+                        <%= __('pagos.total') %>: <span class="text-blue-600"><%=datePayments.length%></span>
+                    </span>
+                </div>
 
-  <input type="date" id="fechaInicio" class="px-4 py-2 border rounded-lg" />
-  <input type="date" id="fechaFin" class="px-4 py-2 border rounded-lg" />
-
-</form>
-
-<div id="contactsContainer" >
-    <div class="contacts-container">
-        <div class="contacts-header">
-            <h1 class="contacts-title">Registros de Pagos <i class="fas fa-credit-card"></i></h1>
-            <span>Total:<%=datePayments.length%></span>
-        </div>
-
-        <% if (datePayments.length > 0) { %>
-            <table class="contacts-table">
-                <thead>
-                    <tr>
-                        <th>Titular</th>
-                        <th>Correo</th>
-                        <th>Descripcion</th>
-                        <th>Tarjeta</th>
-                        <th>Expiración</th>
-                        <th>Moneda</th>
-                        <th>Monto</th>
-                        <th>Referencia</th>
-                        <th>Fecha</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <% datePayments.forEach(payment => { %>
-                        <tr>
-                            <td data-label="Titular"><%= payment.nombreTitular %></td>
-                            <td data-label="Correo" class="contact-email"><%= payment.correo %></td>
-                            <td data-label="Correo" class="contact-email"><%= payment.descripcion %></td>
-                            <td data-label="Tarjeta">
-                                <div class="card-details">
-                                    <span class="card-number">•••• •••• •••• <%= payment.cardNumber.slice(-4) %></span>
-                                    <span class="card-type">
+                <% if (datePayments.length > 0) { %>
+                <div class="overflow-x-auto">
+                    <table class="min-w-full divide-y divide-gray-200">
+                        <thead class="bg-gray-50">
+                            <tr>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"><%= __('pagos.table.cardholder') %></th>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"><%= __('pagos.table.email') %></th>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"><%= __('pagos.table.description') %></th>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"><%= __('pagos.table.card') %></th>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"><%= __('pagos.table.expiry') %></th>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"><%= __('pagos.table.currency') %></th>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"><%= __('pagos.table.amount') %></th>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"><%= __('pagos.table.reference') %></th>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"><%= __('pagos.table.date') %></th>
+                            </tr>
+                        </thead>
+                        <tbody class="bg-white divide-y divide-gray-200">
+                            <% datePayments.forEach(payment => { %>
+                            <tr class="hover:bg-gray-50">
+                                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900"><%= payment.nombreTitular %></td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500"><%= payment.correo %></td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500"><%= payment.descripcion %></td>
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    <div class="flex items-center">
                                         <% if (['4'].includes(payment.cardNumber.charAt(0))) { %>
-                                            <i class="fab fa-cc-visa"></i>
+                                        <i class="fab fa-cc-visa text-2xl text-blue-600 mr-2"></i>
                                         <% } else if (['5'].includes(payment.cardNumber.charAt(0))) { %>
-                                            <i class="fab fa-cc-mastercard"></i>
+                                        <i class="fab fa-cc-mastercard text-2xl text-red-600 mr-2"></i>
                                         <% } else if (['3'].includes(payment.cardNumber.charAt(0))) { %>
-                                            <i class="fab fa-cc-amex"></i>
+                                        <i class="fab fa-cc-amex text-2xl text-blue-400 mr-2"></i>
                                         <% } else { %>
-                                            <i class="fas fa-credit-card"></i>
+                                        <i class="fas fa-credit-card text-2xl text-gray-500 mr-2"></i>
                                         <% } %>
-                                    </span>
-                                </div>
-                            </td>
-                            <td data-label="Expiración" class="card-expiry">
-                                <%= payment.expMonth %>/<%= payment.expYear.toString().slice(-2) %>
-                            </td>
-                            <td data-label="Moneda" class="currency">
-                                <% if (payment.currency === 'USD') { %>
-                                    $ USD
-                                <% } else if (payment.currency === 'EUR') { %>
-                                    € EUR
-                                <% } else if (payment.currency === 'GBP') { %>
-                                    £ GBP
-                                <% } else { %>
+                                        <span class="text-sm font-mono">•••• •••• •••• <%= payment.cardNumber.slice(-4) %></span>
+                                    </div>
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                    <%= payment.expMonth %>/<%= payment.expYear.toString().slice(-2) %>
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                    <% if (payment.currency === 'USD') { %>
+                                    <span class="font-semibold">$</span> USD
+                                    <% } else if (payment.currency === 'EUR') { %>
+                                    <span class="font-semibold">€</span> EUR
+                                    <% } else if (payment.currency === 'GBP') { %>
+                                    <span class="font-semibold">£</span> GBP
+                                    <% } else { %>
                                     <%= payment.currency %>
-                                <% } %>
-                            </td>
-                            <td>
-                                <%=payment.amount%>
-                            </td>
-                            <td>
-                                <%=payment.reference%>
-                            </td>
-                            <td data-label="Fecha" class="contact-date">
-                                <%= new Date(payment.createdAt).toLocaleDateString() %>
-                                <br>
-                                <%= new Date(payment.createdAt).toLocaleTimeString() %>
-                            </td>
-                        </tr>
-                    <% }); %>
-                </tbody>
-            </table>
-        <% } else { %>
-            <p>No hay registros de pagos disponibles.</p>
-        <% } %>
+                                    <% } %>
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-green-600">
+                                    <%= payment.amount %>
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 font-mono">
+                                    <%= payment.reference %>
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                    <div class="flex flex-col">
+                                        <span><%= new Date(payment.createdAt).toLocaleDateString(locale) %></span>
+                                        <span class="text-xs text-gray-400"><%= new Date(payment.createdAt).toLocaleTimeString(locale) %></span>
+                                    </div>
+                                </td>
+                            </tr>
+                            <% }); %>
+                        </tbody>
+                    </table>
+                </div>
+                <% } else { %>
+                <div class="text-center py-12">
+                    <i class="fas fa-wallet text-4xl text-gray-300 mb-4"></i>
+                    <p class="text-gray-500 text-lg"><%= __('pagos.no_records') %></p>
+                </div>
+                <% } %>
+            </div>
+        </div>
     </div>
-    </div>
- <script src="/js/filterPayment.js"></script>
+</body>
+<script src="/js/filterPayment.js"></script>
 </body>
 </html>
